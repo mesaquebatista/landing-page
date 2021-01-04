@@ -17,12 +17,15 @@ class VisitantsController extends Controller
         $validatedData = $request->validate($this->validations());
 
         // TODO: Requisição a API do CEP
+        // $city
+        // $district
+        // $street
 
         $visitant = new Visitant;
         $visitant->name = $validatedData['name'];
         $visitant->email = $validatedData['email'];
         $visitant->nasciemnto = ['nascimento'];
-
+        
     }
 
     public function validations(){
