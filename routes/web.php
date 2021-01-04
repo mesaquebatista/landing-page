@@ -15,3 +15,4 @@ use App\Http\Controllers\VisitantsController;
 */
 
 Route::get('/', [VisitantsController::class, 'index']);
+Route::post('/create', [VisitantsController::class, 'storage']);
