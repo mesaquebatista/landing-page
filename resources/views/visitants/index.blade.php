@@ -38,14 +38,14 @@
                         <div class="field">
                             <label class="label">Data de Nascimento</label>
                             <div class="control">
-                                <input class="input" type="text" placeholder="e.g. 26/01/2002">
+                                <input class="input" type="text" placeholder="e.g. 26/01/2002" name="nascimento" id="nascimento">
                             </div>
                         </div>
 
                         <div class="field">
                             <label class="label">CEP</label>
                             <div class="control">
-                                <input class="input" type="text" placeholder="e.g. 59815-000">
+                                <input class="input" type="text" placeholder="e.g. 59815-000" name="cep" id="cep">
                             </div>
                         </div>
 
@@ -60,11 +60,14 @@
         </div>
     </section>
 
+    <script src="{{ url('js/jquery-3.5.1.min.js') }}"></script>
+    <script src="{{ url('js/jquery.mask.js') }}"></script>
+
     <script>
         $(document).ready(function(){
-            $('.date').mask('00/00/0000');
-            $('.cep').mask('00000-000');
-        }
+            $('#nascimento').mask('00/00/0000');
+            $('#cep').mask('00000-000');
+        });
     </script>
 </body>
 </html>
