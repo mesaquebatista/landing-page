@@ -13,7 +13,6 @@ class VisitantsController extends Controller
     }
 
     public function store(Request $request){
-
         $validatedData = $request->validate($this->validations());
 
         // TODO: Requisição a API do CEP
@@ -32,7 +31,7 @@ class VisitantsController extends Controller
         return [
             'name'      => ['required'],
             'cep'       => ['required'],
-            'email'     => ['unique:visitants'],
+            'email'     => ['required', 'unique:visitants'],
             'nascimento'=> ['required']
         ];
     }

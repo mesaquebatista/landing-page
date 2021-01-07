@@ -16,16 +16,20 @@
                 </h1>
                 <h2 class="subtitle has-text-centered has-text-light">
                     Preencha os dados para baixar o ebook completo e se tornar um profissional no desenvolvimento Web
-                </h2>                
+                </h2>            
             </div>
             <div class="columns is-mobile my-6">
                 <div class="column">
-                    <form action="" method="post">
+                    <form action="{{ route('visitants.store') }}" method="post">
+                        @csrf
                         <div class="field">
                             <label class="label has-text-white">Nome</label>
                             <div class="control">
                                 <input class="input" type="text" placeholder="e.g Alex Smith" name="name">
                             </div>
+                            @error('name')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                           
                         <div class="field">
@@ -33,6 +37,9 @@
                             <div class="control">
                                 <input class="input" type="email" placeholder="e.g. alexsmith@gmail.com" name="email">
                             </div>
+                            @error('email')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                         </div>
 
                         <div class="field">
@@ -40,6 +47,9 @@
                             <div class="control">
                                 <input class="input" type="text" placeholder="e.g. 26/01/2002" name="nascimento" id="nascimento">
                             </div>
+                            @error('nascimento')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                         </div>
 
                         <div class="field">
@@ -48,6 +58,9 @@
                                 <input class="input" type="text" placeholder="e.g. 59815-000" name="cep" id="cep">
                             </div>
                             <div id="nameCity" class="has-text-light"></div>
+                            @error('nascimento')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                         </div>
 
                         <div class="field">
