@@ -13,6 +13,7 @@ class VisitantsController extends Controller
     }
 
     public function store(Request $request){
+        // dd($request->all());
         $validatedData = $request->validate($this->validations());
 
         // TODO: Requisição a API do CEP
@@ -23,8 +24,15 @@ class VisitantsController extends Controller
         $visitant = new Visitant;
         $visitant->name = $validatedData['name'];
         $visitant->email = $validatedData['email'];
-        $visitant->nasciemnto = ['nascimento'];
+        $visitant->nascimento = date("Y-m-d", strtotime(str_replace("/", "-", $validatedData['nascimento'])));
         
+        if($visitant->save()){
+            $message = "Sucesso!";
+            return view('visitants.thanks', compact($message));
+        }else{
+            $message = "Error ao cadastrar!";
+            return view('visitants.thanks', compact($message));
+        }
     }
 
     public function validations(){
