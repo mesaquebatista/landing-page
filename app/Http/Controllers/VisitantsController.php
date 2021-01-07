@@ -15,7 +15,6 @@ class VisitantsController extends Controller
     public function store(Request $request){
         $validatedData = $request->validate($this->validations());
 
-        // TODO: Requisição a API do CEP
         $curl = curl_init();
 
         curl_setopt($curl, CURLOPT_URL, 'https://viacep.com.br/ws/'. $validatedData['cep'] .'/json/');
@@ -50,7 +49,7 @@ class VisitantsController extends Controller
         return [
             'name'      => ['required'],
             'cep'       => ['required', 'min:9'],
-            'email'     => ['required', 'unique:visitants'],
+            'email'     => ['required', 'unique:visitants', 'email'],
             'nascimento'=> ['required']
         ];
     }
